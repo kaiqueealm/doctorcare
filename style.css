@@ -6,13 +6,14 @@
 }
 
 :root{
-  --primary-color :#00856f;
-  --headline: #212529;
-  --paragraph: #484f56;
-  --brand-beige: #ebe6dd;
-  --brand-light:  #c6d8cff4;
-  --bg-light:#F7F9F9;
-  --brand-dark:#00453A;
+  --hue: 01;
+  --primary-color :hsl(var(--hue), 100%, 26%);
+  --headline: hsl(210, 11%, 15%);
+  --paragraph: hsl(210, 9%, 31%);
+  --brand-beige: hsl(39, 26%, 89%);
+  --brand-light:  hsla(calc(var(--hue) - 22), 19%, 81%, 0.957);
+  --bg-light:hsl(180, 14%, 97%);
+  --brand-dark:hsl(170, 100%, 14%);
   font-size: 62.5%; /* (10*100)/2 para deixar o padrao do google agora 1rem = 10px */
 
   --nav-height: 7.2rem;
@@ -148,6 +149,32 @@ section .content p{
   color: var(--headline);
 }
 
+/*==========custon colors============*/
+
+#services .card circle {
+  fill: var(--brand-light);
+}
+
+#navigation .logo path[fill*="#00856F"],
+#backToTopButton circle {
+  fill: var(--primary-color);
+}
+
+button.open-menu path[stroke*="#00856F"],
+#contact li path {
+  stroke: var(--primary-color);
+}
+
+body.menu-expanded #navigation .logo path,
+#navigation.scroll .logo path{
+  fill: white;
+}
+
+
+#navigation.scroll button.open-menu path[stroke*="#00856F"]{
+  fill: white;
+}
+
 /*==========navigation============*/
 nav{
   display: flex;
@@ -164,8 +191,6 @@ nav{
   z-index: 100;
 }
 
-
-
 nav .wrapper{
   display: flex;
   align-items: center;
@@ -178,15 +203,6 @@ nav.scroll{
   
 }
 
-nav.scroll .logo Path{
-  fill: white;
-
-}
-
-nav.scroll button Path{
-  stroke: white;
-
-}
 
 nav button{
   background: none;  /* pra sumir tudo que e tipo de linha */
@@ -278,6 +294,14 @@ body.menu-expanded .menu{
 
 }
 
+.menu .button:hover{
+  background-color: var(--primary-color);
+  color: white;
+
+  filter: brightness(1.5);
+
+  
+}
 
 
 body.menu-expanded .logo,
@@ -412,6 +436,8 @@ body.menu-expanded button Path{
   margin-block: 1.6rem;  /* margim block vai pegar encima e embaixo */
 }
 
+
+
 /* ======about=============*/
 strong{
   color: var(--primary-color);
@@ -499,17 +525,24 @@ footer .social-links{
 
 #backToTopButton{
   position: fixed; /* fixo em todas as camadas*/
-  bottom: 1rem;
+  bottom: 2rem;
   right: 2.5rem; /* colocar mais ao lado */
 
   opacity: 0;  /* iniciar desaparecido */
   visibility: hidden;
+
+  transform: translateY(100%);  /* para deixar o botão mais suave */
+  transition: 200ms; /* para deixar o botão mais suave */
+
+
 }
+
+
 #backToTopButton.show {
   opacity: 1;
   visibility: visible;
-
-}
+  transform: translateY(0);
+  }
 
 
 /* a tag tem display inline nao aceita margin top e botton nao aceita widhif e heith tenho que trenasforma em um display inline block  Ctrl+f    para cria um atalho para busca  */

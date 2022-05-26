@@ -1,10 +1,14 @@
 window.addEventListener('scroll', onScroll) // para eliminar um erro
+// o add vc ira fazer um evento e o listine e a função que esta ouvindo o evento de onScroll
 
-function onScroll() {  
+onScroll()
+function onScroll(){
   showNavOnScroll()
   showBackToTopButtonOnScroll()
-  
 }
+
+  
+
 
 function showNavOnScroll() {
   if(scrollY > 0){
