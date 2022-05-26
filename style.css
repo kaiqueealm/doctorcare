@@ -1,0 +1,515 @@
+/*===========geral===============*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* o temanho que a caixa e medida*/
+}
+
+:root{
+  --primary-color :#00856f;
+  --headline: #212529;
+  --paragraph: #484f56;
+  --brand-beige: #ebe6dd;
+  --brand-light:  #c6d8cff4;
+  --bg-light:#F7F9F9;
+  --brand-dark:#00453A;
+  font-size: 62.5%; /* (10*100)/2 para deixar o padrao do google agora 1rem = 10px */
+
+  --nav-height: 7.2rem;
+
+}
+
+html{
+  scroll-behavior: smooth;  /* rola a pagina de uma maneira suave */
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'DM Sans';
+  font-size: 1.6rem;
+
+  text-align: center;
+
+  overflow: overlay; /* deixar mais certo o menu igual o outro */
+
+  background-color: var(--bg-light);
+ 
+}
+
+
+.wrapper{
+  width: 37.5rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+ul{
+  list-style: none;
+}
+
+
+img{
+  max-width: 100%; /* deixar imagem em 100% da tela atual */
+}
+
+section{
+  padding-block: 10rem; /* 100px encima e embaixo */
+}
+
+section header h4{
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
+  color: var(--primary-color);
+
+  text-transform: uppercase; /* tudo em caixa alta */
+
+  margin-bottom: 1.6rem; 
+
+  
+
+
+/* identical to box height, or 21px */
+
+
+
+}
+section header h2{
+  
+font-size: 3rem;
+line-height: 3.9rem;
+
+color: var(--headline);
+
+}
+section header h1{
+  font-size: 3.4rem;
+  color: var(--headline);
+  line-height: 130%;
+
+  margin-bottom: 2.4rem;
+}
+
+section .content p{
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;
+
+  color: var(--paragraph) ;
+  
+}
+.button{
+  background: var(--primary-color);
+ 
+
+  border: none;
+  border-radius: 4rem;
+  margin-bottom: 5rem;
+  padding: 1.6rem 3.2rem;
+  width: fit-content; /* se adapita ao tamanho do conteudo */
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase; /* caixa auta */
+  font-size: 1.4rem;
+
+  display: flex; /* para mexer com as caixas de dentro  */
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem; /* espaço entre os elementos  */
+
+  transition: 200ms;
+
+  text-decoration: none;
+}
+
+.button:hover{
+  background-color: var(--brand-dark);
+
+
+}
+
+.social-links{
+  display: flex; /*coloca os elementos um ao lado do outro */
+  align-items: center;
+  justify-content: center; /* coloca ao meio */ 
+  gap: 3.2rem; /* da espaço entre os elementos */
+  
+}
+
+
+.a{
+  text-decoration: none;
+  color: var(--headline);
+}
+
+/*==========navigation============*/
+nav{
+  display: flex;
+
+  /* pra colocar um item distante do outro */
+  
+  height: var(--nav-height);
+
+
+  position: fixed;
+  top: 0;
+  width: 100vw;
+
+  z-index: 100;
+}
+
+
+
+nav .wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+   /* pra colocar um item distante do outro */
+}
+
+nav.scroll{
+  background: var(--primary-color);
+  
+}
+
+nav.scroll .logo Path{
+  fill: white;
+
+}
+
+nav.scroll button Path{
+  stroke: white;
+
+}
+
+nav button{
+  background: none;  /* pra sumir tudo que e tipo de linha */
+  border: none; /* pra sumir tudo que e tipo de borda */
+  cursor: pointer; /* pra ver a maozinha */
+}
+
+/*==========menu-expanded============*/
+body.menu-expanded{
+  overflow: hidden;
+} /*  esta tirando as barras de rolagem */
+
+body.menu-expanded >  :not(nav){ /* esse comando esta pegando todos =* os filhos do primeiro nivel =  > */
+  visibility: hidden;
+
+}
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu{
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu{
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu{
+  transform: translateY(100%);  /* joga para tela para o menu vim de baixo pra cima */
+}
+
+body.menu-expanded .menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+
+  width: 100vw;
+  height: 100vh;
+
+  padding-top: var(--nav-height); /* para dar espaço */
+
+  transition: transform 350ms; /* para o menu vim de baixo pra cima */
+
+  transform: translateY(0); /* para o menu vim de baixo pra cima */
+
+}
+
+
+
+.menu ul:nth-child(1){
+  display: flex; /* flexivel um ao lado do outro */
+  flex-direction: column;/* mais cloca coluna pra ficar um abaixo do outro */
+  gap: 1.8rem;
+  margin-top: 5rem; /* afasta do topo */
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+
+  
+}
+
+.menu ul li a{
+  color: white;
+  text-decoration: none;
+}
+
+.menu .button{
+  background: white;
+  border-radius: 4rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  /* Primary Colors/brand-green */
+
+  color: var(--primary-color);
+
+  display: inline-block; /* pra colocar pading margin em todos os sentidos */
+  padding: 16px 32px;
+
+  margin-top: 1.8rem;
+  margin-bottom: 6rem;
+
+}
+
+
+
+body.menu-expanded .logo,
+body.menu-expanded  button{
+  position: relative; /* faça que distrave algumas propiedades */
+  z-index: 10;
+
+}
+
+body.menu-expanded .logo Path{
+  fill: white; /* nao precisa colocar todo comando de scrool */
+
+}
+
+body.menu-expanded button Path{
+  stroke: white; /* nao precisa colocar todo comando de scrool */
+
+}
+
+/* ======home=============*/
+
+#home{
+
+  padding-top: calc(4.1rem + var(--nav-height)) ; /* encima pra ser bem do inicio usar pedding em vez de margem*/
+  
+  
+}
+
+#home::before{
+  content: "";
+  width: 100%;
+  height: calc(108rem + var(--nav-height));
+  background-color: var(--brand-light);
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+}
+
+#home .button{
+  margin-inline: auto;
+}
+
+#home p{
+  font-size: 1.8rem;
+  line-height: 150%;
+  font-weight: 400;
+  color: var(--paragraph);
+  margin-bottom: 3.2rem;
+}
+
+
+
+#home img {
+  width: 36rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 6rem;
+  margin: 0;
+}
+
+
+
+#home .stats{
+  width: 32.7rem;
+
+  padding-block: 4rem;
+  
+  margin-inline: auto; /* ao inves de utilizar margin-right: auto;
+  margin-left: auto; utiliza margin-inline: auto; */
+  background-color: var(--brand-beige);
+  border: 0,1rem  solid var(--brand-light);
+  border-radius: 0,6rem;
+
+  display: flex; /* para centraliza */
+  flex-direction: column; 
+  justify-content: center;
+  gap: 6rem;  /* separa elementos */
+  
+}
+
+#home .stat h3 {
+  font-size: 4.8rem;
+  color: var(--headline);
+  line-height: 130%;
+
+  margin-bottom: 0.4rem;
+}
+
+#home.stat p {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+
+
+
+
+/* ======services=============*/
+#services header h2{
+  margin-bottom: 6rem;
+  }
+  
+
+#services .cards{
+  display: flex; /* para colocar um ao lado do outro */
+  flex-direction: column; /* um baixo do outro em coluna e distrava a propiedade coluna */
+  gap: 3.2rem;
+
+}
+
+#services .card {
+  padding: 2.4rem;
+  text-align: left;
+
+  background: white;
+
+  border: 1px  solid var(--brand-light);
+  
+  border-radius: .6rem; /* colocar ponto para deixar quadrado */
+
+}
+
+
+
+#services .card h3{
+  margin-block: 1.6rem;  /* margim block vai pegar encima e embaixo */
+}
+
+/* ======about=============*/
+strong{
+  color: var(--primary-color);
+}
+
+#about {
+  text-align: left;
+  background-color: var(--brand-beige);
+  /* alinhamento tudo para esquerda */
+  
+ 
+ 
+}
+
+#about header h2{
+  margin-bottom: 2.4rem;
+}
+
+#about .content p {
+  margin-top: 2.4rem;
+  margin-bottom: 6rem;
+}
+
+/* ======contact=============*/
+
+#contact{
+  text-align: left;
+}
+
+#contact header h2{
+  margin-bottom: 3.2rem;
+}
+
+#contact ul{
+  display: flex;
+  flex-direction: column; /* so pra utilizar o gap e arruma o conteudo */
+  gap: 1.6rem;
+
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li{
+  display: flex;
+  align-items: center; /* para ageitar os elementos */
+  gap:0.8rem;
+}
+
+/* ======footer=============*/
+
+footer{
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+
+  text-align: left;
+  color: white;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .logo svg{
+  width: 23.6rem;
+  height: 3.1rem;
+}
+
+footer .logo path{
+  fill: white;
+}
+
+footer p{
+  color: var(--brand-beige);
+  line-height: 2; /* para dar espaçamento entre as linhas */
+
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links{
+  justify-content: flex-start;
+}
+
+/* ======backToTopButton=============*/
+
+
+#backToTopButton{
+  position: fixed; /* fixo em todas as camadas*/
+  bottom: 1rem;
+  right: 2.5rem; /* colocar mais ao lado */
+
+  opacity: 0;  /* iniciar desaparecido */
+  visibility: hidden;
+}
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+
+}
+
+
+/* a tag tem display inline nao aceita margin top e botton nao aceita widhif e heith tenho que trenasforma em um display inline block  Ctrl+f    para cria um atalho para busca  */
