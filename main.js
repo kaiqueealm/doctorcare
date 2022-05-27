@@ -5,9 +5,71 @@ onScroll()
 function onScroll(){
   showNavOnScroll()
   showBackToTopButtonOnScroll()
+
+  //activateMenuAtCurrentSection(home) /* sempre que eu execultar essa função nessa funçao eu estou execultando a linha de baixo nesse codigo */
+  activateMenuAtCurrentSection(services)
 }
 
+function activateMenuAtCurrentSection(section){
+  //linha alvo
+  const targetLine = scrollY + innerHeight / 2   //const e uma variavel constante
   
+ //verificar se a seção passou da linha
+ //quais dados vou precisar? sempre que vc for fazer uma logica de progamação vc precisa saber quais sao os dados que vai precisa pra seguir naquela sequancia logica
+
+  //o topo da seção
+  const sectionTop = services.offsetTop
+
+  // a altura da seção
+  const sectionHeight = services.offsetHeight
+
+  // o topo da seçao chegou ou ultrapasou a linha alvo
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop//targetLine >= e igual ou utrapassou o sectionTop
+
+  //informações dos dados
+  console.log(
+    'O topo da seção chegou ou passou da linha?',
+    sectionTopReachOrPassedTargetLine
+  )
+
+  //verificar se a base esta abaixo da linha alvo
+  //quais dados vou precisar?
+  
+  // a seção termina a onde
+  const sectionEndsAt = sectionTop + sectionHeight
+
+  //o final da seção passou da linha alvo
+  const sectionEndPassedTargetLine = sectionEndsAt <= targetLine
+
+  console.log('O fundo da seção passou da linha',
+  !sectionEndPassedTargetLine )
+  // && significa E
+  // ! significa nao
+  //${} dentro disso vc pode colocar qualquer codigo javascript
+
+  //limites da seção
+  const sectionBoundaries =
+  sectionTopReachOrPassedTargetLine  && 
+  !sectionEndPassedTargetLine
+
+  const sectionId = section.getAttribut('id')
+  const menuElement = document
+  .querySelector(`.menu a[href*=${sectionId}]`)
+
+  if (sectionBoundaries) {
+    menuElement.classList.add('active')
+  }
+
+}
+
+
+
+
+
+
+
+
+
 
 
 function showNavOnScroll() {
