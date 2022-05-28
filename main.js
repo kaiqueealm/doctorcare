@@ -7,7 +7,7 @@ function onScroll(){
   showBackToTopButtonOnScroll()
 
   //activateMenuAtCurrentSection(home) /* sempre que eu execultar essa função nessa funçao eu estou execultando a linha de baixo nesse codigo */
-  activateMenuAtCurrentSection(services)
+  activateMenuAtCurrentSection(home)
 }
 
 function activateMenuAtCurrentSection(section){
@@ -18,18 +18,18 @@ function activateMenuAtCurrentSection(section){
  //quais dados vou precisar? sempre que vc for fazer uma logica de progamação vc precisa saber quais sao os dados que vai precisa pra seguir naquela sequancia logica
 
   //o topo da seção
-  const sectionTop = services.offsetTop
+  const sectionTop = section.offsetTop
 
   // a altura da seção
-  const sectionHeight = services.offsetHeight
+  const sectionHeight = section.offsetHeight
 
   // o topo da seçao chegou ou ultrapasou a linha alvo
-  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop//targetLine >= e igual ou utrapassou o sectionTop
+  const sectionTopReachOrPassedTargetline = targetLine >= sectionTop//targetLine >= e igual ou utrapassou o sectionTop
 
   //informações dos dados
   console.log(
     'O topo da seção chegou ou passou da linha?',
-    sectionTopReachOrPassedTargetLine
+    sectionTopReachOrPassedTargetline
   )
 
   //verificar se a base esta abaixo da linha alvo
@@ -39,18 +39,18 @@ function activateMenuAtCurrentSection(section){
   const sectionEndsAt = sectionTop + sectionHeight
 
   //o final da seção passou da linha alvo
-  const sectionEndPassedTargetLine = sectionEndsAt <= targetLine
+  const sectionEndPassedTargetline = sectionEndsAt <= targetLine
 
-  console.log('O fundo da seção passou da linha',
-  !sectionEndPassedTargetLine )
+  console.log('O fundo da seção passou da linha?',
+  sectionEndPassedTargetline )
   // && significa E
   // ! significa nao
   //${} dentro disso vc pode colocar qualquer codigo javascript
 
   //limites da seção
   const sectionBoundaries =
-  sectionTopReachOrPassedTargetLine  && 
-  !sectionEndPassedTargetLine
+  sectionTopReachOrPassedTargetline  &&
+  !sectionEndPassedTargetline
 
   const sectionId = section.getAttribut('id')
   const menuElement = document
